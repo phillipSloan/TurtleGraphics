@@ -1,0 +1,8 @@
+{
+   SET A := 100 ;
+   SET B := 45 ;
+   SET C := 50 ;
+   FD A
+   RT B
+   FD C
+}

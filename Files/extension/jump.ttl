@@ -1,0 +1,29 @@
+{
+   SET DELAY ON
+   DO A FROM 1 TO 40
+   {
+      SET COLOUR RANDOM
+      FD 5
+   }
+   JUMP 400 300
+   RT 90
+   DO A FROM 1 TO 40
+   {
+      SET COLOUR RANDOM
+      FD 5
+   }
+   JUMP 400 300
+   RT 90
+   DO A FROM 1 TO 40
+   {
+      SET COLOUR RANDOM
+      FD 5
+   }
+   JUMP 400 300
+   RT 90
+   DO A FROM 1 TO 40
+   {
+      SET COLOUR RANDOM
+      FD 5
+   }
+}

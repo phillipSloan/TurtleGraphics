@@ -1,0 +1,11 @@
+{
+   DO A FROM 1 TO 18
+   {
+      DO B FROM 1 TO 4
+      {
+         FD 100
+         RT 90
+      }
+      RT 20
+   }
+}

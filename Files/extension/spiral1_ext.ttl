@@ -1,0 +1,13 @@
+{
+   SET DELAY ON
+   DO A FROM 1 TO 100 {
+      SET C := A 1.5 * ;
+      SET D := C 2 % ;
+      IF D == 0
+      {
+         SET COLOUR CUSTOM 255 0 0
+         FD C
+         RT 62
+      }
+   }
+}

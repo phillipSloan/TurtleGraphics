@@ -1,0 +1,65 @@
+My strategy was to use black/white box testing via assertions and files rather than a test harness as I felt more confident with this method. I investigated test harnesses but I felt I could reliably test functions without this method. The parser has the testing in the "production" version however I have commented it out to prevent it from affecting any tests.  For the interpreter and extension I have included nonSDL versions, these copies are to demonstrate my testing.c methodology and not for "production" tests.
+
+Parser:
+I took the broadest view of the grammar that I could:
+:- Numbers: The program accepts all numbers, negative, decimals and integers.
+:- Variables: I allowed any A-Z letter to be parsed successfuly, the parser does not mind if it's uninitialised/undefined.
+:- RPN: The parser allows anything through that conforms to the grammar described in the assignment brief, it doesn't check for RPN specifically, only that it conforms to the grammar.
+:- Testing can be found in the testing.c file.
+
+Interpreter:
+:- Numbers:- Interpretered in the same way as parser.  For example, RT -50 effectively functions as LT 50.
+:- Variables: Variables are initialised by SET or DO, and can only be used by other functions once initialised, otherwise an error message is thrown up.
+:- DO loops: The var would be set to the varnum after FROM... for example DO A FROM 1 TO 10 { } ... A = 1, 2, 3 ... 10.
+:- RPN: ADT Stack used to help error check RPN syntax.  I concluded that, for RPN to be valid, it would require at least two operands before an operator, and that once the semi colon was reached, there should only be one operand left on the stack (the sum of all the operations performed), otherwise the incorrect syntax has been used.
+:- Assertion testing can be found in the interp/noSDL/testing.c file.  Majority of testing was done prior to adding SDL.
+:- Valgrind and fsanitize tests were run before adding SDL.
+
+Extension:
+:- SDL had to be removed to allow me to continue creating/testing functions with assertion testing.
+:- As the colour functions solely used SDL they were tested with .ttl files to ensure they functioned as intended.
+:- Assertion testing can be found in the extension/noSDL/testing.c file. From line 790 onwards is extension testing, interpreter testing was kept in to ensure I did not break anything while writing the extension.
+
+Testing:
+:- I created a rail road diagram to help visualise the assignment, and how best to start building the program.  I used the diagram to establish which were the smallest functions to start with.
+:- I created assertions and wrote op, varnum and then var first, before building up and doing the same for LT/RT/FD, I continued with this method until I had finished the parser.
+:- Aimed to created functions as boolean where possible, avoiding void functions wherever possible.
+:- From reading the railroad diagram I made assertions in my test file, and then wrote functions to meet those standards, ensuring they worked as intended before moving to the next function.
+:- As I wrote I had to replace certain functions in the assertions I had made.  For example, once I wrote instruction, the strcmp check for "FD"/"LT"/"RT" was removed from their respective function, instruction replaced FD/LT/RT on the assertion test so the function/.ttl code could be checked fully.
+:- If invalid grammar is detected an error message is thrown up ("Failed to parse.") and the program exits with EXIT_FAILURE.
+:- If successfully parsed the program is silent for the parser, or it draws with SDL for the interpreter/extension, exiting with return 0;
+
+
+Various .ttl files can be found in the Files/ directory
+
+White Box Testing: Files provided as part of the assignment brief, their correct output was known prior to running.
+Files/simp.ttl
+Files/simp_c.ttl
+Files/spiral1_c.ttl
+Files/spiral2_c.ttl
+
+Black Box Testing: I have provided some of the files I tested with, their output was not known before running.
+first.ttl : output's nothing, but is valid... consists of "{" and "}" only.
+invalid.ttl : fails as invalid grammar.  FD with nothing after it, fails to parse/interpret successfully.
+blank.ttl : blank file.  Fails to parse/interpret file successfully.
+basic.ttl : Line pointing north from the centre of the window, then it will have a fork to the right, before traveling half the previous distance.  Used to orientate myself with the SDL output.
+basic_set.ttl : Same as above, using set for the variables instead.
+basic_interpfail.ttl : Uses uninitialised variables, passes parser but fails interpreter.
+basic_setfail.ttl : uses incorrect RPN notation, passes parser but fails interpreter.
+square_spiral.ttl : Makes a star-like pattern from squares being rotated on an axis.
+cube.ttl : makes a 3D cube
+window.ttl : makes a window (4 squares)
+triangle.ttl : makes a triangle
+pentagon.ttl : makes a pentagon, with a do loop
+reverse_spiral.ttl : creates spiral2_c.ttl but in reverse.
+
+Extension: extension files can be found in the Files/extension folder
+circles.ttl - Many circles in an increasing radius each in a random colour.
+flower.ttl - looks vaguely like a red rose.
+flower_c.ttl - adding more functionality (if, mod, comments) similar look to above, more colours
+if.ttl - similar look to basic.ttl , if statement is ignored as condition not met.
+penupdown_ext.ttl - three vertical coloured lines, showing delay and pen
+spiral1_ext.ttl - spiral1_c.ttl extended with delay, if and colour.
+square_spiral_Ext.ttl - expanded the basic with colour
+window.ttl - expanded with colour
+jump.ttl - creates a crosshair, using jump to go back to centre

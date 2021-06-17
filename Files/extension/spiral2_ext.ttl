@@ -1,0 +1,17 @@
+{
+/* Added some circles and colour to spiral2_c.ttl */
+   DO A FROM 1 TO 50 {
+      FD A
+      RT 30
+      SET COLOUR RED
+      CIRCLE 5
+      SET COLOUR WHITE
+      DO B FROM 1 TO 8 {
+         SET C := A 5 / ;
+         SET COLOUR RANDOM
+         FD C
+         SET COLOUR WHITE
+         RT 45
+      }
+   }
+}

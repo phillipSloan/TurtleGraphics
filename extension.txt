@@ -1,0 +1,56 @@
+My extension created extra features for the user.
+
+The new extended grammar is:
+
+<MAIN> ::= <COMMENT> | "{" <INSTRUCTLST>
+<INSTRUCTLST> ::= <INSTRUCTION><INSTRUCTLST> | "}"
+<INSTRUCTION> ::= <FD> | <LT> | <RT> | <DO> | <SET> | <IF> | <JUMP> | <CIRCLE> | <PEN> | <COMMENT>
+<FD> ::= "FD" <VARNUM>
+<LT> ::= "LT" <VARNUM>
+<RT> ::= "RT" <VARNUM>
+<DO> ::= "DO" <VAR> "FROM" <VARNUM> "TO" <VARNUM> "{" <INSTRUCTLST>
+<VAR> ::= [A-Z]
+<VARNUM> ::= number | <VAR>
+<POLISH> ::= <OP> <POLISH> | <VARNUM> <POLISH> | ";"
+<SET> ::= "SET" <VAR> ":=" <POLISH> | "SET" <COLOUR> | "SET" <DELAY>
+<IF> ::= "IF" VAR <SIGN> <VARNUM> "{" <INSTRUCTLST>
+<SIGN> ::= ">" | ">=" | "<" | "<=" | "=="
+<OP> ::= "+" | "-" | "*" | "/" | "%"
+<CIRCLE> ::= "CIRCLE" <VARNUM>
+<JUMP> ::= <VARNUM> <VARNUM>
+<PEN> ::= "ON" | "OFF"
+<COMMENT> ::= "*/" <anything> <COMMENT> | "*/"
+<COLOUR> ::= "RED" | "GREEN" | "BLUE" | "WHITE" | "YELLOW" | "RANDOM" | <CUSTOM>
+<CUSTOM> ::= <VARNUM> <VARNUM> <VARNUM>
+<DELAY> ::= "ON" | "OFF"
+
+-----------------------------------------------------------------------
+
+<SET> Also now accepts:
+<COLOUR> This will turn the line the colour specified, the user can set it manually with RGB or random can be selected.
+<DELAY> Provides a small delay to show the movement/drawing of the turtle.
+
+<INSTRUCTION> also now accepts:
+<COMMENT> Allows user to write comments, implemented recursively.
+<CIRCLE> Draws a circle around the turtle, with a given radius, implemented with Draw Circle from neillssdl2.
+<PEN> Allows the user to decide whether lines are being made while the turtle moves about
+<IF> Added a conditional operator.
+<JUMP> This turtle can jump!  Moves to a specific x,y coordinate.
+
+<OP> Added modulus - Rounding with 0.5 for improved accuracy.
+
+<SIGN> Implemented for <IF>
+
+I wanted to increase my knowledge of the SDL libraries so worked with those to create a circle and colour commands.
+
+Throughout this course I found algorithms, the problem solving of them really rewarding, For this assignment I enjoyed solving the "do loop" and thought adding extra flow control would be interesting to allow more flexibility when creating .ttl files.
+Comments are something I find incredibly useful, and I think they are a key part of software engineering, so I felt I wanted to add this too.
+
+Other features I added because they were part of the original game and I wanted to know how they could be implemented, e.g. pen, jump
+
+I have created some files that show off the new functionalities - They are located in Files/extension/
+
+For example, full set can be found in testing.txt:
+
+flower.ttl :- creates something that vaguely looks like a rose
+flower_c.ttl :- similar to above, but using IF statements and modulus for a more colourful version

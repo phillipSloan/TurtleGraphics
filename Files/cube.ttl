@@ -1,0 +1,31 @@
+{
+   FD 100
+   LT 90
+   FD 100
+   LT 90
+   FD 100
+   LT 90
+   FD 100
+   LT 135
+   FD 50
+   RT 45
+   FD 100
+   LT 90
+   FD 100
+   LT 90
+   FD 100
+   LT 90
+   FD 100
+   LT 90
+   FD 100
+   RT 135
+   FD 50
+   RT 135
+   FD 100
+   RT 45
+   FD 50
+   LT 135
+   FD 100
+   LT 45
+   FD 50
+}

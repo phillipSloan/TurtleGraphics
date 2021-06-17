@@ -1,0 +1,8 @@
+{
+   DO A FROM 1 TO 250
+   {
+      SET A := A 5 + ;
+      SET COLOUR RANDOM
+      CIRCLE A
+   }
+}

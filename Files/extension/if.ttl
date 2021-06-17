@@ -1,0 +1,12 @@
+/* This is a comment */
+{
+   SET A := 504 5 % ;
+   FD A
+   IF A == 0 {
+      LT 45
+      FD 10
+   }
+   FD 50
+   RT 45
+   FD 50
+}

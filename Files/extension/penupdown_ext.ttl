@@ -1,0 +1,17 @@
+/* this is a basic demonstration of pen up / pen down */
+{
+      SET DELAY ON
+      SET COLOUR CUSTOM 255 0 0
+      FD 100
+      PEN UP
+      FD 50
+      PEN DOWN
+      SET COLOUR CUSTOM 0 0 165
+      FD 100
+      PEN UP
+      RT 180
+      FD 300
+      PEN DOWN
+      SET COLOUR YELLOW
+      FD 100
+}

@@ -1,0 +1,20 @@
+/* This creates a window-like object, that has randomly
+   coloured lines */
+{
+/* this allows you to watch the lines be drawn */
+   SET DELAY ON
+   DO A FROM 1 TO 4
+   {
+      SET COLOUR RANDOM
+      FD 100
+      LT 90
+      SET COLOUR RANDOM
+      FD 100
+      LT 90
+      SET COLOUR RANDOM
+      FD 100
+      LT 90
+      SET COLOUR RANDOM
+      FD 100
+   }
+}

@@ -1,0 +1,16 @@
+{
+   SET A := 0 ;
+   /* RED */
+   SET R := 0 ;
+
+   DO D FROM 1 TO 1000 {
+
+      /* RED GOES LOOPS FROM 0 TO 255 */
+      SET R := D 255 % ;
+
+      SET COLOUR CUSTOM R 0 0
+      SET A := A 0.1 + ;
+      FD A
+      RT 26
+   }
+}
